@@ -11,6 +11,7 @@ import AVFoundation
 struct SongDetailView: View {
     let song: Song
     @ObservedObject var audioVM: AudioPlayerViewModel
+    @State private var showSleepTimer = false
     
     @State private var playbackProgress: Double = 0
     @State private var isPlaying: Bool = false
@@ -60,6 +61,21 @@ struct SongDetailView: View {
                             .padding(.top, -10)
                             
                             Spacer()
+                            
+                            Button(action: {
+                                showSleepTimer = true
+                            }) {
+                                Image("timeIcon")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .tint(.green)
+                                    .frame(width: 30, height: 30)
+                                    .foregroundColor(.green)
+                            }
+                            .padding(.top, -10)
+                            .sheet(isPresented: $showSleepTimer) {
+                                SleepTimerView(player: audioVM.player)
+                            }
                             
                             Button(action: {
                                 CoreDataManager.shared.saveLikedSong(song)

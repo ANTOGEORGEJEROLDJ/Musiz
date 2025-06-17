@@ -37,6 +37,8 @@
 		4E1E02472E018A1E0078E722 /* SettingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E02462E018A1E0078E722 /* SettingsRow.swift */; };
 		4E1E02492E018A3B0078E722 /* SettingsToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E02482E018A3B0078E722 /* SettingsToggle.swift */; };
 		4E1E024B2E0191C80078E722 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E024A2E0191C80078E722 /* ImagePicker.swift */; };
+		4E9E22552E01AE3B002AB8EB /* SleepTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9E22542E01AE3B002AB8EB /* SleepTimerManager.swift */; };
+		4E9E22572E01AE53002AB8EB /* SleepTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9E22562E01AE53002AB8EB /* SleepTimerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +92,8 @@
 		4E1E02462E018A1E0078E722 /* SettingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRow.swift; sourceTree = "<group>"; };
 		4E1E02482E018A3B0078E722 /* SettingsToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsToggle.swift; sourceTree = "<group>"; };
 		4E1E024A2E0191C80078E722 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		4E9E22542E01AE3B002AB8EB /* SleepTimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTimerManager.swift; sourceTree = "<group>"; };
+		4E9E22562E01AE53002AB8EB /* SleepTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTimerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -157,7 +161,6 @@
 				4E1E01C52E0131AE0078E722 /* MainTabView.swift */,
 				4E1E01D42E01330F0078E722 /* Model */,
 				4E1E01D12E0132360078E722 /* View */,
-				4E1E02432E0189F30078E722 /* Settings */,
 				4E1E01D52E01331A0078E722 /* ViewModel */,
 				4E1E02022E013DCB0078E722 /* CoreData */,
 				4E1E01C42E0131AE0078E722 /* Assets.xcassets */,
@@ -237,6 +240,7 @@
 		4E1E01D52E01331A0078E722 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				4E9E22532E01AE23002AB8EB /* SleepingTIme */,
 				4E1E01D62E01332B0078E722 /* AudioPlayerViewModel.swift */,
 				4E1E01DA2E0135A90078E722 /* SongCard.swift */,
 				4E1E01DC2E0135C10078E722 /* SectionView.swift */,
@@ -265,6 +269,7 @@
 		4E1E023F2E0189F00078E722 /* ProfileScreen */ = {
 			isa = PBXGroup;
 			children = (
+				4E1E02432E0189F30078E722 /* Settings */,
 				4E1E023D2E0189F00078E722 /* ProfileView.swift */,
 				4E1E023C2E0189F00078E722 /* LikedSongsView.swift */,
 				4E1E024A2E0191C80078E722 /* ImagePicker.swift */,
@@ -281,6 +286,15 @@
 				4E1E02482E018A3B0078E722 /* SettingsToggle.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		4E9E22532E01AE23002AB8EB /* SleepingTIme */ = {
+			isa = PBXGroup;
+			children = (
+				4E9E22542E01AE3B002AB8EB /* SleepTimerManager.swift */,
+				4E9E22562E01AE53002AB8EB /* SleepTimerView.swift */,
+			);
+			path = SleepingTIme;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -449,7 +463,9 @@
 				4E1E02492E018A3B0078E722 /* SettingsToggle.swift in Sources */,
 				4E1E01E92E0136730078E722 /* SamplePlayList.swift in Sources */,
 				4E1E022A2E01646B0078E722 /* CustomTextField.swift in Sources */,
+				4E9E22572E01AE53002AB8EB /* SleepTimerView.swift in Sources */,
 				4E1E02082E013E2A0078E722 /* CoreDataManager.swift in Sources */,
+				4E9E22552E01AE3B002AB8EB /* SleepTimerManager.swift in Sources */,
 				4E1E02192E0153010078E722 /* PlaylistSelectionSheet.swift in Sources */,
 				4E1E01C92E0131AE0078E722 /* MusizApp.swift in Sources */,
 				4E1E020C2E01455B0078E722 /* AddPlaylistView.swift in Sources */,
