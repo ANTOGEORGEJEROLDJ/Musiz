@@ -24,6 +24,9 @@
 		4E1E01EB2E0136920078E722 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E01EA2E0136920078E722 /* ProfileView.swift */; };
 		4E1E01F32E0137530078E722 /* Peaches.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E1E01F22E0137530078E722 /* Peaches.mp3 */; };
 		4E1E01F52E01375C0078E722 /* Perfect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E1E01F42E01375C0078E722 /* Perfect.mp3 */; };
+		4E1E02062E013DEF0078E722 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E02042E013DEF0078E722 /* Model.xcdatamodeld */; };
+		4E1E02082E013E2A0078E722 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E02072E013E2A0078E722 /* CoreDataManager.swift */; };
+		4E1E020A2E013E6D0078E722 /* UserPlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E02092E013E6D0078E722 /* UserPlaylistView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +67,9 @@
 		4E1E01EA2E0136920078E722 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		4E1E01F22E0137530078E722 /* Peaches.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Peaches.mp3; sourceTree = "<group>"; };
 		4E1E01F42E01375C0078E722 /* Perfect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Perfect.mp3; sourceTree = "<group>"; };
+		4E1E02052E013DEF0078E722 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		4E1E02072E013E2A0078E722 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		4E1E02092E013E6D0078E722 /* UserPlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPlaylistView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -132,6 +138,7 @@
 				4E1E01D42E01330F0078E722 /* Model */,
 				4E1E01D12E0132360078E722 /* View */,
 				4E1E01D52E01331A0078E722 /* ViewModel */,
+				4E1E02022E013DCB0078E722 /* CoreData */,
 				4E1E01C42E0131AE0078E722 /* Assets.xcassets */,
 				4E1E01F22E0137530078E722 /* Peaches.mp3 */,
 				4E1E01F42E01375C0078E722 /* Perfect.mp3 */,
@@ -175,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				4E1E01E42E0136430078E722 /* PlaylistView.swift */,
+				4E1E02092E013E6D0078E722 /* UserPlaylistView.swift */,
 			);
 			path = PlayListScreen;
 			sourceTree = "<group>";
@@ -218,6 +226,15 @@
 				4E1E01DC2E0135C10078E722 /* SectionView.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4E1E02022E013DCB0078E722 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				4E1E02042E013DEF0078E722 /* Model.xcdatamodeld */,
+				4E1E02072E013E2A0078E722 /* CoreDataManager.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,6 +383,7 @@
 			files = (
 				4E1E01DB2E0135A90078E722 /* SongCard.swift in Sources */,
 				4E1E01D72E01332B0078E722 /* AudioPlayerViewModel.swift in Sources */,
+				4E1E02062E013DEF0078E722 /* Model.xcdatamodeld in Sources */,
 				4E1E01D92E0135920078E722 /* SongModel.swift in Sources */,
 				4E1E01E72E0136590078E722 /* PlayList.swift in Sources */,
 				4E1E01E32E0136220078E722 /* SearchCategory.swift in Sources */,
@@ -377,7 +395,9 @@
 				4E1E01C82E0131AE0078E722 /* MainTabView.swift in Sources */,
 				4E1E01E92E0136730078E722 /* SamplePlayList.swift in Sources */,
 				4E1E01EB2E0136920078E722 /* ProfileView.swift in Sources */,
+				4E1E02082E013E2A0078E722 /* CoreDataManager.swift in Sources */,
 				4E1E01C92E0131AE0078E722 /* MusizApp.swift in Sources */,
+				4E1E020A2E013E6D0078E722 /* UserPlaylistView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -702,6 +722,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4E1E02042E013DEF0078E722 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4E1E02052E013DEF0078E722 /* Model.xcdatamodel */,
+			);
+			currentVersion = 4E1E02052E013DEF0078E722 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4E1E01922E0131950078E722 /* Project object */;
 }

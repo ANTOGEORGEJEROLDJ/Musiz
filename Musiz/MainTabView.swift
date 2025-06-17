@@ -50,7 +50,7 @@ struct MainTabView: View {
                 }
                 .tag(1)
 
-            PlaylistView(playlist: demoPlaylist, audioVM: audioVM)
+            UserPlaylistView()
                 .tabItem {
                     Image(systemName: "music.note.list")
                     Text("Playlist")

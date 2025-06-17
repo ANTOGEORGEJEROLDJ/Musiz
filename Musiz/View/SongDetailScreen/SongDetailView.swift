@@ -15,6 +15,7 @@ struct SongDetailView: View {
     // Playback progress state (0 to song length in seconds)
     @State private var playbackProgress: Double = 0
     @State private var isPlaying: Bool = false
+    @State private var showPlaylist = false
     
     // Callbacks for next/previous song control
     var onNext: (() -> Void)?
@@ -43,6 +44,8 @@ struct SongDetailView: View {
                         .cornerRadius(15)
                         .shadow(radius: 10)
                         .padding(.top, -60)
+                    
+                    VStack{
                     
                     VStack() {
                         Text(song.title)
@@ -73,9 +76,9 @@ struct SongDetailView: View {
                         .padding(.horizontal, 4)
                     }
                     .padding(.horizontal)
-                    .padding(.top, -30)
+                    .padding(.top, -15)
                     
-                    VStack{
+                    
                     // Playback control buttons: Previous, Play/Pause, Next
                     HStack(spacing: 60) {
                         Button(action: {
@@ -118,12 +121,13 @@ struct SongDetailView: View {
                                 .foregroundColor(.white.opacity(0.7))
                         }
                     }
-                    }.padding(.top, -20)
+                    }.padding()
+                    .padding(.top, -20)
                     
                     // Add to playlist button
                     Button(action: {
-                        // Your add to playlist logic here
-                        print("Add '\(song.title)' to playlist")
+                        CoreDataManager.shared.saveSong(title: song.title, artist: song.artist, imageName: song.imageName)
+                        showPlaylist = true
                     }) {
                         HStack {
                             Image(systemName: "plus.circle.fill")
@@ -136,6 +140,10 @@ struct SongDetailView: View {
                         .cornerRadius(20)
                     }
                     .padding(.top, 20)
+                    .navigationDestination(isPresented: $showPlaylist) {
+                        UserPlaylistView()
+                    }
+
                     
                     Button(action: {
                         saveSongLocally(song)
@@ -151,6 +159,15 @@ struct SongDetailView: View {
                         .cornerRadius(20)
                     }
                     .padding(.top, 10)
+                    
+                    NavigationLink(destination: UserPlaylistView()) {
+                        Text("View My Playlist")
+                            .foregroundColor(.green)
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(12)
+                    }
+
 
                     
                     Spacer()
