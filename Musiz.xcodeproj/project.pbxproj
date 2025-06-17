@@ -36,6 +36,7 @@
 		4E1E02452E018A090078E722 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E02442E018A090078E722 /* SettingsSection.swift */; };
 		4E1E02472E018A1E0078E722 /* SettingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E02462E018A1E0078E722 /* SettingsRow.swift */; };
 		4E1E02492E018A3B0078E722 /* SettingsToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E02482E018A3B0078E722 /* SettingsToggle.swift */; };
+		4E1E024B2E0191C80078E722 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E024A2E0191C80078E722 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		4E1E02442E018A090078E722 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		4E1E02462E018A1E0078E722 /* SettingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRow.swift; sourceTree = "<group>"; };
 		4E1E02482E018A3B0078E722 /* SettingsToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsToggle.swift; sourceTree = "<group>"; };
+		4E1E024A2E0191C80078E722 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -265,6 +267,7 @@
 			children = (
 				4E1E023D2E0189F00078E722 /* ProfileView.swift */,
 				4E1E023C2E0189F00078E722 /* LikedSongsView.swift */,
+				4E1E024A2E0191C80078E722 /* ImagePicker.swift */,
 			);
 			path = ProfileScreen;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				4E1E01DB2E0135A90078E722 /* SongCard.swift in Sources */,
 				4E1E01D72E01332B0078E722 /* AudioPlayerViewModel.swift in Sources */,
 				4E1E02062E013DEF0078E722 /* Model.xcdatamodeld in Sources */,
+				4E1E024B2E0191C80078E722 /* ImagePicker.swift in Sources */,
 				4E1E02172E0149480078E722 /* PlaylistDetailView.swift in Sources */,
 				4E1E01D92E0135920078E722 /* SongModel.swift in Sources */,
 				4E1E01E72E0136590078E722 /* PlayList.swift in Sources */,

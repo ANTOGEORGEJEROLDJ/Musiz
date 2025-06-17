@@ -120,6 +120,7 @@ struct LoginScreen: View {
                 }
             }.navigationDestination(isPresented: $navigateToHome) {
                 MainTabView()
+                    .navigationBarBackButtonHidden(true)
             }
 
         }

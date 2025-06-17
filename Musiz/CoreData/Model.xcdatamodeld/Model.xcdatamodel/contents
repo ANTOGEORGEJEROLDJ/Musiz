@@ -23,6 +23,7 @@
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
         <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="password" optional="YES" attributeType="String"/>
+        <attribute name="profileImage" optional="YES" attributeType="Binary"/>
         <attribute name="username" optional="YES" attributeType="String"/>
     </entity>
     <entity name="UserPlaylist" representedClassName="UserPlaylist" syncable="YES" codeGenerationType="class">

@@ -117,7 +117,7 @@ class CoreDataManager {
 
     // MARK: - Save Context Helper
 
-    private func saveContext() {
+     func saveContext() {
         if context.hasChanges {
             do {
                 try context.save()

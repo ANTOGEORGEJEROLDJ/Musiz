@@ -11,6 +11,8 @@ import AVFoundation
 
 struct HomeView: View {
     @StateObject private var audioVM = AudioPlayerViewModel()
+    @State private var profileImage: UIImage?
+    @State private var user: User?
     
     var body: some View {
         NavigationView {
@@ -25,15 +27,28 @@ struct HomeView: View {
                             .padding(.top, 16)
                         
                         NavigationLink(destination: ProfileView()) {
-                            Image(systemName: "person.crop.circle")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 40, height: 40)
-                                .foregroundColor(.green)
-                                .padding(.top, 5)
-                                .padding(.trailing)
+                            if let image = profileImage {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 45, height: 45)
+                                    .clipShape(Circle())
+                                    .overlay(Circle().stroke(Color.green, lineWidth: 2))
+                                    .padding(.top, 16)
+                                    .padding(.leading, 20)
+                            } else {
+                                Image(systemName: "person.crop.circle")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 45, height: 45)
+                                    .foregroundColor(.gray)
+                                    .padding(.top, 16)
+                                    .padding(.leading, 20)
+                            }
+                            
                         }
-
+                        
+                        
                     }
                     
                     SectionView(title: "Recommended", songs: recommendedSongs, audioVM: audioVM)
@@ -45,6 +60,12 @@ struct HomeView: View {
             }
             .background(Color.black.edgesIgnoringSafeArea(.all))
             .navigationBarHidden(true)
+            .onAppear {
+                user = CoreDataManager.shared.fetchLatestUser()
+                if let data = user?.profileImage, let uiImage = UIImage(data: data) {
+                    profileImage = uiImage
+                }
+            }
         }
     }
 }

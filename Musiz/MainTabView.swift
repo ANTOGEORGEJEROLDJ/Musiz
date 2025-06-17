@@ -75,6 +75,7 @@ struct MainTabView: View {
         }
         .accentColor(.green) // Tab icon highlight
         .background(Color.black.ignoresSafeArea())
+        .navigationBarBackButtonHidden(true)
     }
 }
 
