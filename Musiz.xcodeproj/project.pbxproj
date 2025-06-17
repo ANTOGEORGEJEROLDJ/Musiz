@@ -29,6 +29,8 @@
 		4E1E020C2E01455B0078E722 /* AddPlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E020B2E01455B0078E722 /* AddPlaylistView.swift */; };
 		4E1E02172E0149480078E722 /* PlaylistDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E02162E0149470078E722 /* PlaylistDetailView.swift */; };
 		4E1E02192E0153010078E722 /* PlaylistSelectionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E02182E0153010078E722 /* PlaylistSelectionSheet.swift */; };
+		4E1E021B2E0163F00078E722 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E021A2E0163F00078E722 /* LoginScreen.swift */; };
+		4E1E022A2E01646B0078E722 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E02292E01646B0078E722 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,8 @@
 		4E1E020B2E01455B0078E722 /* AddPlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlaylistView.swift; sourceTree = "<group>"; };
 		4E1E02162E0149470078E722 /* PlaylistDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDetailView.swift; sourceTree = "<group>"; };
 		4E1E02182E0153010078E722 /* PlaylistSelectionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistSelectionSheet.swift; sourceTree = "<group>"; };
+		4E1E021A2E0163F00078E722 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		4E1E02292E01646B0078E722 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -204,6 +208,7 @@
 		4E1E01D12E0132360078E722 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4E1E021C2E0163F90078E722 /* LoginScreen */,
 				4E1E01CB2E0131BD0078E722 /* HomeScreen */,
 				4E1E01CC2E0131C50078E722 /* SongDetailScreen */,
 				4E1E01CD2E0131D80078E722 /* SongList */,
@@ -241,6 +246,15 @@
 				4E1E02072E013E2A0078E722 /* CoreDataManager.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		4E1E021C2E0163F90078E722 /* LoginScreen */ = {
+			isa = PBXGroup;
+			children = (
+				4E1E021A2E0163F00078E722 /* LoginScreen.swift */,
+				4E1E02292E01646B0078E722 /* CustomTextField.swift */,
+			);
+			path = LoginScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -396,10 +410,12 @@
 				4E1E01E32E0136220078E722 /* SearchCategory.swift in Sources */,
 				4E1E01DF2E0135E40078E722 /* SongListView.swift in Sources */,
 				4E1E01E12E0135FA0078E722 /* SongDetailView.swift in Sources */,
+				4E1E021B2E0163F00078E722 /* LoginScreen.swift in Sources */,
 				4E1E01DD2E0135C10078E722 /* SectionView.swift in Sources */,
 				4E1E01D32E0132EC0078E722 /* HomeView.swift in Sources */,
 				4E1E01C82E0131AE0078E722 /* MainTabView.swift in Sources */,
 				4E1E01E92E0136730078E722 /* SamplePlayList.swift in Sources */,
+				4E1E022A2E01646B0078E722 /* CustomTextField.swift in Sources */,
 				4E1E01EB2E0136920078E722 /* ProfileView.swift in Sources */,
 				4E1E02082E013E2A0078E722 /* CoreDataManager.swift in Sources */,
 				4E1E02192E0153010078E722 /* PlaylistSelectionSheet.swift in Sources */,

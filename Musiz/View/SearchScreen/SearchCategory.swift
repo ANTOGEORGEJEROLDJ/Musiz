@@ -63,14 +63,14 @@ struct SpotifySearchView: View {
                     Picker("Select Genre", selection: $selectedGenre) {
                         ForEach(genres, id: \.self) { genre in
                             Text(genre).tag(genre)
-                                .foregroundColor(Color.green.opacity(0.9))
+                                .foregroundColor(Color.green.opacity(1.9))
                         }
                     }
                     .padding()
                     .frame(height: 40)
                     .pickerStyle(SegmentedPickerStyle())
                     .padding(.horizontal)
-                    .background(Color.green.opacity(0.9))
+                    .background(Color.green.opacity(1.9))
 //                    .shadow(color: .green, radius: 2, x: 1, y: 1)
                     .cornerRadius(14)
 

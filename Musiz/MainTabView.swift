@@ -32,9 +32,16 @@ let demoPlaylist = Playlist(
 )
 
 
+
 struct MainTabView: View {
     @State private var selectedTab = 0
     @StateObject private var audioVM = AudioPlayerViewModel()
+
+    init() {
+        UITabBar.appearance().backgroundColor = UIColor.black
+        UITabBar.appearance().barTintColor = .black
+        UITabBar.appearance().unselectedItemTintColor = UIColor.gray
+    }
 
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -52,7 +59,7 @@ struct MainTabView: View {
                 }
                 .tag(1)
 
-            UserPlaylistView()
+            UserPlaylistView(songToAdd: nil)
                 .tabItem {
                     Image(systemName: "music.note.list")
                     Text("Playlist")
@@ -66,7 +73,8 @@ struct MainTabView: View {
                 }
                 .tag(3)
         }
-        .tint(.green)
-
+        .accentColor(.green) // Tab icon highlight
+        .background(Color.black.ignoresSafeArea())
     }
 }
+
