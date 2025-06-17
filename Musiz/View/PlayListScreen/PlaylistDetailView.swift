@@ -18,7 +18,7 @@ struct PlaylistDetailView: View {
                 .padding()
 
             List {
-                ForEach(songs) { song in
+                ForEach(songs, id: \.self) { song in
                     HStack {
                         Image(song.imageName ?? "placeholder")
                             .resizable()
@@ -38,6 +38,7 @@ struct PlaylistDetailView: View {
         }
         .onAppear {
             songs = CoreDataManager.shared.fetchSongs(for: playlist)
+            print("Loaded songs count: \(songs.count)")
         }
     }
 }

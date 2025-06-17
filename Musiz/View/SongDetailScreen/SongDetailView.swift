@@ -150,7 +150,8 @@ struct SongDetailView: View {
                     
                     // Add to playlist button
                     Button(action: {
-                        showPlaylist = true
+                        allPlaylists = CoreDataManager.shared.fetchPlaylists()
+                        showBottomSheet = true
                     }) {
                         HStack {
                             Image(systemName: "plus.circle.fill")
@@ -162,9 +163,13 @@ struct SongDetailView: View {
                         .foregroundColor(.black)
                         .cornerRadius(20)
                     }
-                    .navigationDestination(isPresented: $showPlaylist) {
-                        UserPlaylistView(songToAdd: song)
+                    .sheet(isPresented: $showBottomSheet) {
+                        PlaylistSelectionSheet(playlists: allPlaylists, songToAdd: song) {
+                            showBottomSheet = false
+                        }
                     }
+
+
 
                     
                     Button(action: {

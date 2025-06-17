@@ -15,16 +15,18 @@ let demoPlaylist = Playlist(
     owner: "Spotify",                            // ✅ Added
     imageName: "1",
     songs: [
-        Song(title: "Chill Beat 1", artist: "Artist A", imageName: "1", fileName: "chill_beat_1"),
-        Song(title: "Chill Beat 2", artist: "Artist B", imageName: "2", fileName: "chill_beat_2"),
-        Song(title: "Chill Beat 3", artist: "Artist C", imageName: "3", fileName: "chill_beat_3"),
-        Song(title: "Chill Beat 4", artist: "Artist D", imageName: "4", fileName: "chill_beat_4"),
-        Song(title: "Chill Beat 5", artist: "Artist E", imageName: "5", fileName: "chill_beat_5"),
-        Song(title: "Chill Beat 6", artist: "Artist F", imageName: "6", fileName: "chill_beat_6"),
-        Song(title: "Chill Beat 7", artist: "Artist G", imageName: "7", fileName: "chill_beat_7"),
-        Song(title: "Chill Beat 8", artist: "Artist H", imageName: "8", fileName: "chill_beat_8"),
-        Song(title: "Chill Beat 9", artist: "Artist I", imageName: "9", fileName: "chill_beat_9"),
-        Song(title: "Chill Beat 10", artist: "Artist J", imageName: "10", fileName: "chill_beat_10")
+        Song(title: "Happy Now", artist: "Zedd", imageName: "2", fileName: "happy_now", genre: "Chill"),
+        Song(title: "Sunshine", artist: "OneRepublic", imageName: "3", fileName: "sunshine", genre: "Chill"),
+        Song(title: "Elevate", artist: "Drake", imageName: "4", fileName: "elevate", genre: "Chill"),
+        Song(title: "Good Vibes", artist: "Khalid", imageName: "5", fileName: "good_vibes", genre: "Chill"),
+        Song(title: "Feel Alive", artist: "Lost Frequencies", imageName: "6", fileName: "feel_alive", genre: "Chill"),
+        Song(title: "Bright Side", artist: "Imagine Dragons", imageName: "7", fileName: "bright_side", genre: "Chill"),
+        Song(title: "On Top", artist: "Calvin Harris", imageName: "8", fileName: "on_top", genre: "Chill"),
+        Song(title: "Shine", artist: "Lizzo", imageName: "9", fileName: "shine", genre: "Chill"),
+        Song(title: "Celebrate", artist: "Pitbull", imageName: "10", fileName: "celebrate", genre: "Chill"),
+        Song(title: "Rise Up", artist: "Andra Day", imageName: "11", fileName: "rise_up", genre: "Chill"),
+        Song(title: "Jumpstart", artist: "Sia", imageName: "12", fileName: "jumpstart", genre: "Chill"),
+        Song(title: "Bright Lights", artist: "Ellie Goulding", imageName: "1", fileName: "bright_lights", genre: "Chill")
     ]
     
 )

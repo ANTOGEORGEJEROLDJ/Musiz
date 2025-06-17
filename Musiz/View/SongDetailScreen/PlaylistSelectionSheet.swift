@@ -9,39 +9,35 @@
 import SwiftUI
 
 struct PlaylistSelectionSheet: View {
-    let playlists: [UserPlaylist]
-    let songToAdd: Song
-    let onDismiss: () -> Void
-    
-    var body: some View {
-        VStack(spacing: 10) {
-            Text("Select a Playlist")
-                .font(.headline)
-                .padding()
+    var playlists: [UserPlaylist]
+    var songToAdd: Song
 
-            ForEach(playlists) { playlist in
+    var onDismiss: () -> Void
+
+    var body: some View {
+        NavigationView {
+            List(playlists, id: \.self) { playlist in
                 Button(action: {
                     CoreDataManager.shared.addSong(songToAdd, to: playlist)
                     onDismiss()
                 }) {
-                    Text(playlist.name ?? "Unnamed")
-                        .font(.body)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.green.opacity(0.2))
-                        .cornerRadius(10)
+                    HStack {
+                        Text(playlist.name ?? "Unnamed")
+                        Spacer()
+                        Image(systemName: "plus.circle.fill")
+                            .foregroundColor(.green)
+                    }
+                    .padding(.vertical, 8)
                 }
             }
-
-            Button("Cancel") {
-                onDismiss()
+            .navigationTitle("Select Playlist")
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") {
+                        onDismiss()
+                    }
+                }
             }
-            .foregroundColor(.red)
-            .padding(.top)
         }
-        .padding()
-        .background(Color.white)
-        .cornerRadius(25)
-        .padding()
     }
 }

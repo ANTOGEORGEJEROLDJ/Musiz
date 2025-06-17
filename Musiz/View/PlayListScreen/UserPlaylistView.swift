@@ -35,18 +35,28 @@ struct UserPlaylistView: View {
 
                 List {
                     ForEach(playlists) { playlist in
-                        Button(action: {
-                            if let song = songToAdd {
-                                CoreDataManager.shared.addSong(song, to: playlist)
+                        if let song = songToAdd {
+                            // Case: Song is being added from SongDetailView
+                            HStack {
+                                Text(playlist.name ?? "Unnamed")
+                                    .font(.headline)
+                                Spacer()
+                                Image(systemName: "plus.circle.fill")
+                                    .foregroundColor(.green)
                             }
-                        }) {
+                            .contentShape(Rectangle()) // Makes the whole row tappable
+                            .onTapGesture {
+                                CoreDataManager.shared.addSong(song, to: playlist)
+                                playlists = CoreDataManager.shared.fetchPlaylists()
+                            }
+                        } else {
+                            // Normal navigation to PlaylistDetailView
                             NavigationLink(destination: PlaylistDetailView(playlist: playlist)) {
                                 Text(playlist.name ?? "Unnamed")
                                     .font(.headline)
                             }
                         }
                     }
-
                 }
                 .listStyle(PlainListStyle())
                 .onAppear {

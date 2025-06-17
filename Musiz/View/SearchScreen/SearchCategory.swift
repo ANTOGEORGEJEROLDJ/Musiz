@@ -16,28 +16,27 @@ struct SearchCategory: Identifiable {
 
 struct SpotifySearchView: View {
     @State private var searchText = ""
+    @State private var selectedGenre = "All"
     @StateObject private var audioVM = AudioPlayerViewModel()
 
     let categories = [
-        SearchCategory(title: "Podcasts", color: .purple, image: "15"),
-        SearchCategory(title: "Charts", color: .blue, image: "22"),
-        SearchCategory(title: "New Releases", color: .green, image: "17"),
-        SearchCategory(title: "Workout", color: .orange, image: "30"),
+        SearchCategory(title: "Pop", color: .purple, image: "15"),
+        SearchCategory(title: "Rock", color: .blue, image: "22"),
+        SearchCategory(title: "Jazz", color: .green, image: "17"),
+        SearchCategory(title: "Album", color: .orange, image: "30"),
         SearchCategory(title: "Chill", color: .pink, image: "28")
     ]
-    
-    // Use your existing song list
+
+    let genres = ["All", "Pop", "Rock", "Jazz", "Chill", "Album"] // Picker list
+
     let allSongs = recommendedSongs + topMixes + moodBooster
 
-
     var filteredSongs: [Song] {
-        if searchText.isEmpty {
-            return allSongs
-        } else {
-            return allSongs.filter {
-                $0.title.localizedCaseInsensitiveContains(searchText) ||
-                $0.artist.localizedCaseInsensitiveContains(searchText)
-            }
+        allSongs.filter { song in
+            (selectedGenre == "All" || song.genre == selectedGenre) &&
+            (searchText.isEmpty ||
+             song.title.localizedCaseInsensitiveContains(searchText) ||
+             song.artist.localizedCaseInsensitiveContains(searchText))
         }
     }
 
@@ -45,18 +44,37 @@ struct SpotifySearchView: View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
+                    
                     Text("Search")
                         .font(.largeTitle).bold().foregroundColor(.white)
                         .padding(.horizontal)
+                        .foregroundColor(.white.opacity(0.7))
 
+
+                    // Search TextField
                     TextField("What do you want to listen to?", text: $searchText)
                         .padding(12)
-                        .background(Color(.darkGray))
+                        .background(Color.white.opacity(0.7))
                         .cornerRadius(10)
                         .foregroundColor(.white)
                         .padding(.horizontal)
                     
-                    if !searchText.isEmpty {
+                    // Genre Picker
+                    Picker("Select Genre", selection: $selectedGenre) {
+                        ForEach(genres, id: \.self) { genre in
+                            Text(genre).tag(genre)
+                                .foregroundColor(Color.green.opacity(0.9))
+                        }
+                    }
+                    .padding()
+                    .frame(height: 40)
+                    .pickerStyle(SegmentedPickerStyle())
+                    .padding(.horizontal)
+                    .background(Color.green.opacity(0.9))
+//                    .shadow(color: .green, radius: 2, x: 1, y: 1)
+                    .cornerRadius(14)
+
+                    if !filteredSongs.isEmpty {
                         Text("Results")
                             .font(.title2).bold().foregroundColor(.white)
                             .padding(.horizontal)
@@ -91,7 +109,8 @@ struct SpotifySearchView: View {
                                 }
                             }
                         }
-                    } else {
+                    } else if searchText.isEmpty && selectedGenre == "All" {
+                        // Default Category Grid View
                         Text("Browse all")
                             .font(.title2).bold().foregroundColor(.white)
                             .padding(.horizontal)
@@ -99,7 +118,6 @@ struct SpotifySearchView: View {
                         LazyVGrid(columns: [GridItem(), GridItem()]) {
                             ForEach(categories) { cat in
                                 ZStack(alignment: .bottomLeading) {
-                                    
                                     Rectangle()
                                         .fill(cat.color)
                                         .cornerRadius(10)
@@ -109,7 +127,7 @@ struct SpotifySearchView: View {
                                         .bold()
                                         .foregroundColor(.white)
                                         .padding()
-                                    
+
                                     Image(cat.image)
                                         .resizable()
                                         .scaledToFit()
@@ -117,12 +135,16 @@ struct SpotifySearchView: View {
                                         .opacity(0.8)
                                         .cornerRadius(14)
                                         .padding(.leading, 100)
-                                        .padding(.bottom,35)
-                                    
+                                        .padding(.bottom, 35)
                                 }
                             }
                         }
                         .padding()
+                    } else {
+                        // No results
+                        Text("No results found")
+                            .foregroundColor(.gray)
+                            .padding()
                     }
                 }
             }
