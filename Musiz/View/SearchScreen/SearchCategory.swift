@@ -18,7 +18,9 @@ struct SpotifySearchView: View {
     @State private var searchText = ""
     @State private var selectedGenre = "All"
     @StateObject private var audioVM = AudioPlayerViewModel()
+    @Environment(\.colorScheme) var colorScheme  // Detect Light/Dark Mode
 
+    // Sample categories
     let categories = [
         SearchCategory(title: "Pop", color: .purple, image: "15"),
         SearchCategory(title: "Rock", color: .blue, image: "22"),
@@ -27,10 +29,12 @@ struct SpotifySearchView: View {
         SearchCategory(title: "Chill", color: .pink, image: "28")
     ]
 
-    let genres = ["All", "Pop", "Rock", "Jazz", "Chill", "Album"] // Picker list
+    let genres = ["All", "Pop", "Rock", "Jazz", "Chill", "Album"]
 
+    // Sample data source
     let allSongs = recommendedSongs + topMixes + moodBooster
 
+    // Filtering based on genre and search text
     var filteredSongs: [Song] {
         allSongs.filter { song in
             (selectedGenre == "All" || song.genre == selectedGenre) &&
@@ -44,39 +48,37 @@ struct SpotifySearchView: View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
-                    
-                    Text("Search")
-                        .font(.largeTitle).bold().foregroundColor(.white)
-                        .padding(.horizontal)
-                        .foregroundColor(.white.opacity(0.7))
 
+                    // Main Title
+                    Text("Search")
+                        .font(.largeTitle).bold()
+                        .foregroundColor(.primary)
+                        .padding(.horizontal)
 
                     // Search TextField
                     TextField("What do you want to listen to?", text: $searchText)
                         .padding(12)
-                        .background(Color.white.opacity(0.7))
-                        .cornerRadius(10)
-                        .foregroundColor(.white)
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color(.secondarySystemBackground))
+                        )
+                        .foregroundColor(.primary)
                         .padding(.horizontal)
-                    
+
                     // Genre Picker
                     Picker("Select Genre", selection: $selectedGenre) {
                         ForEach(genres, id: \.self) { genre in
                             Text(genre).tag(genre)
-                                .foregroundColor(Color.green.opacity(1.9))
                         }
                     }
-                    .padding()
-                    .frame(height: 40)
-                    .pickerStyle(SegmentedPickerStyle())
                     .padding(.horizontal)
-                    .background(Color.green.opacity(1.9))
-//                    .shadow(color: .green, radius: 2, x: 1, y: 1)
-                    .cornerRadius(14)
+                    .pickerStyle(SegmentedPickerStyle())
 
+                    // Search Results
                     if !filteredSongs.isEmpty {
                         Text("Results")
-                            .font(.title2).bold().foregroundColor(.white)
+                            .font(.title2).bold()
+                            .foregroundColor(.primary)
                             .padding(.horizontal)
 
                         LazyVStack(alignment: .leading, spacing: 16) {
@@ -92,11 +94,11 @@ struct SpotifySearchView: View {
                                         VStack(alignment: .leading) {
                                             Text(song.title)
                                                 .font(.headline)
-                                                .foregroundColor(.white)
+                                                .foregroundColor(.primary)
 
                                             Text(song.artist)
                                                 .font(.subheadline)
-                                                .foregroundColor(.gray)
+                                                .foregroundColor(.secondary)
                                         }
 
                                         Spacer()
@@ -110,9 +112,10 @@ struct SpotifySearchView: View {
                             }
                         }
                     } else if searchText.isEmpty && selectedGenre == "All" {
-                        // Default Category Grid View
+                        // Show category grid
                         Text("Browse all")
-                            .font(.title2).bold().foregroundColor(.white)
+                            .font(.title2).bold()
+                            .foregroundColor(.primary)
                             .padding(.horizontal)
 
                         LazyVGrid(columns: [GridItem(), GridItem()]) {
@@ -141,14 +144,15 @@ struct SpotifySearchView: View {
                         }
                         .padding()
                     } else {
-                        // No results
+                        // No results found
                         Text("No results found")
-                            .foregroundColor(.gray)
+                            .foregroundColor(.secondary)
                             .padding()
                     }
                 }
+                .padding(.top)
             }
-            .background(Color.black.edgesIgnoringSafeArea(.all))
+            .background(Color(.systemBackground)) // Adaptive background
             .navigationBarHidden(true)
         }
     }

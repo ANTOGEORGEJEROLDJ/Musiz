@@ -12,11 +12,14 @@ struct LoginScreen: View {
     @State private var email = ""
     @State private var password = ""
     @State private var navigateToHome = false
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.black.ignoresSafeArea()
+                // Background adapts to light/dark mode
+                (colorScheme == .dark ? Color.black : Color.white)
+                    .ignoresSafeArea()
 
                 ScrollView {
                     VStack(spacing: 30) {
@@ -27,11 +30,10 @@ struct LoginScreen: View {
                                 .scaledToFit()
                                 .frame(width: 120, height: 120)
                                 .cornerRadius(50)
-                                
 
                             Text("Login to Continue")
                                 .font(.title3.bold())
-                                .foregroundColor(.green)
+                                .foregroundStyle(colorScheme == .dark ? .green : .green)
                         }
                         .padding(.top, 50)
 
@@ -42,7 +44,9 @@ struct LoginScreen: View {
                             CustomTextField(icon: "lock.fill", placeholder: "Password", text: $password)
                         }
                         .padding()
-                        .background(Color.white.opacity(0.4))
+                        .background(
+                            (colorScheme == .dark ? Color.white.opacity(0.05) : Color.black.opacity(0.05))
+                        )
                         .cornerRadius(20)
                         .overlay(
                             RoundedRectangle(cornerRadius: 20)
@@ -76,12 +80,11 @@ struct LoginScreen: View {
                         }
                         .padding(.horizontal)
 
-                        HStack (spacing: 20){
+                        // Social Buttons
+                        HStack(spacing: 20) {
                             Button(action: {
-                                
-                            navigateToHome = true
-                                
-                            }){
+                                navigateToHome = true
+                            }) {
                                 Image("google")
                                     .resizable()
                                     .scaledToFit()
@@ -89,46 +92,36 @@ struct LoginScreen: View {
                             }
                             .frame(width: 70, height: 22)
                             .padding()
-                            .foregroundColor(.white)
                             .background(Color.green.opacity(0.7))
-                            .font(.headline)
                             .cornerRadius(15)
-                            .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 5)
-                            
-                            
-                            Button(action:{
 
-                                
-                            }){
+                            Button(action: {
+                                // Apple login logic
+                            }) {
                                 Image("apple")
                                     .resizable()
                                     .scaledToFit()
-                                
                             }
                             .frame(width: 70, height: 22)
                             .padding()
-                            .foregroundColor(.white)
                             .background(Color.green.opacity(0.7))
-                            .font(.headline)
                             .cornerRadius(15)
-                            .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 5)
                         }
 
                         Spacer()
                     }
                     .padding()
                 }
-            }.navigationDestination(isPresented: $navigateToHome) {
+            }
+            .navigationDestination(isPresented: $navigateToHome) {
                 MainTabView()
                     .navigationBarBackButtonHidden(true)
             }
-
         }
     }
 }
-
-
-
-#Preview {
-    LoginScreen()
-}
+//
+//#Preview {
+//    LoginScreen()
+//        .preferredColorScheme(.dark) // For preview only
+//}

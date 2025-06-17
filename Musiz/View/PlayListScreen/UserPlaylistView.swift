@@ -16,15 +16,19 @@ struct UserPlaylistView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.black.ignoresSafeArea()
+                Color(.systemBackground) // Adaptive background
+                    .ignoresSafeArea()
 
                 VStack(alignment: .leading, spacing: 16) {
-                    // Header
+                    // MARK: - Header
                     HStack {
                         Text("My Playlists")
                             .font(.largeTitle.bold())
-                            .foregroundColor(.green)
+                            .foregroundColor(.primary)
+
                         Spacer()
+
+                        // Show Add Playlist Sheet
                         Button(action: {
                             showAddView = true
                         }) {
@@ -37,12 +41,13 @@ struct UserPlaylistView: View {
                     .padding(.horizontal)
                     .padding(.top)
 
-                    // Playlist List
+                    // MARK: - Playlist List
                     List {
                         ForEach(playlists) { playlist in
                             if let song = songToAdd {
+                                // Mode: Add Song to Playlist
                                 HStack(spacing: 12) {
-                                    Image("2") // Replace with dynamic thumbnail if available
+                                    Image("2") // Replace with dynamic thumbnail if needed
                                         .resizable()
                                         .scaledToFill()
                                         .frame(width: 50, height: 50)
@@ -51,11 +56,11 @@ struct UserPlaylistView: View {
                                     VStack(alignment: .leading, spacing: 4) {
                                         Text(playlist.name ?? "Unnamed")
                                             .font(.headline)
-                                            .foregroundColor(.white)
+                                            .foregroundColor(.primary)
 
-                                        Text("UserName") // Replace with actual username if available
+                                        Text("UserName") // Replace with dynamic user name
                                             .font(.subheadline)
-                                            .foregroundColor(.gray)
+                                            .foregroundColor(.secondary)
                                     }
 
                                     Spacer()
@@ -70,24 +75,25 @@ struct UserPlaylistView: View {
                                     playlists = CoreDataManager.shared.fetchPlaylists()
                                 }
                             } else {
+                                // Mode: Navigate to Playlist Detail
                                 NavigationLink(destination: PlaylistDetailView(playlist: playlist)) {
                                     HStack {
                                         VStack(alignment: .leading) {
                                             Text(playlist.name ?? "Unnamed")
                                                 .font(.headline)
-                                                .foregroundColor(.white)
+                                                .foregroundColor(.primary)
                                         }
 
                                         Spacer()
 
                                         Image(systemName: "chevron.right")
-                                            .foregroundColor(.gray)
+                                            .foregroundColor(.secondary)
                                     }
                                     .padding(.vertical, 8)
                                 }
                             }
                         }
-                        .listRowBackground(Color.black)
+                        .listRowBackground(Color(.systemBackground)) // Adapt row background
                     }
                     .listStyle(PlainListStyle())
                     .onAppear {
@@ -98,6 +104,8 @@ struct UserPlaylistView: View {
                 }
             }
             .navigationBarHidden(true)
+
+            // MARK: - Add Playlist Sheet
             .sheet(isPresented: $showAddView) {
                 AddPlaylistView {
                     playlists = CoreDataManager.shared.fetchPlaylists()

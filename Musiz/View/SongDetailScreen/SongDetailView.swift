@@ -12,31 +12,28 @@ struct SongDetailView: View {
     let song: Song
     @ObservedObject var audioVM: AudioPlayerViewModel
     
-    // Playback progress state (0 to song length in seconds)
     @State private var playbackProgress: Double = 0
     @State private var isPlaying: Bool = false
     @State private var showPlaylist = false
     @State private var showBottomSheet = false
     @State private var allPlaylists: [UserPlaylist] = []
 
-    
-    // Callbacks for next/previous song control
     var onNext: (() -> Void)?
     var onPrevious: (() -> Void)?
     
-    // Timer for updating slider progress
     @State private var timer: Timer? = nil
-    
+
     var body: some View {
         ZStack {
-            Color.black
+            Color(.systemBackground)
                 .ignoresSafeArea()
-            ScrollView{
+            
+            ScrollView {
                 VStack(spacing: 30) {
                     
                     Text("PLAYING FROM ALBUM")
                         .font(.subheadline)
-                        .foregroundColor(.white.opacity(0.8))
+                        .foregroundColor(.secondary)
                     
                     Spacer()
                     
@@ -48,25 +45,21 @@ struct SongDetailView: View {
                         .shadow(radius: 10)
                         .padding(.top, -60)
                     
-                    VStack{
-                        
-                        HStack{
-                            
-                            VStack() {
+                    VStack {
+                        HStack {
+                            VStack {
                                 Text(song.title)
                                     .font(.title2.bold())
-                                    .foregroundColor(.white)
+                                    .foregroundColor(.primary)
                                     .multilineTextAlignment(.center)
                                 
                                 Text(song.artist)
                                     .font(.headline)
-                                    .foregroundColor(.gray)
+                                    .foregroundColor(.secondary)
                             }
                             .padding(.top, -10)
                             
                             Spacer()
-                            
-                            
                             
                             Button(action: {
                                 CoreDataManager.shared.saveLikedSong(song)
@@ -79,89 +72,86 @@ struct SongDetailView: View {
                             }
                             .padding(.top, -10)
                             
-                            
                             Button(action: {
                                 shareSong(song)
                             }) {
-                                    Image("share")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 30, height: 30)
-                                        .tint(.green)
-                                        .foregroundColor(.green)
-                            }.padding(.top, -10)
-
-
-                        }.padding()
-                            .padding(.top, -40)
-                        
-                        
-                    // Playback slider + time labels
-                    VStack {
-                        Slider(value: $playbackProgress, in: 0...(audioVM.player?.duration ?? 1), onEditingChanged: sliderEditingChanged)
-                            .accentColor(.green)
-                        
-                        HStack {
-                            Text(formatTime(playbackProgress))
-                                .foregroundColor(.gray)
-                                .font(.caption)
-                            Spacer()
-                            Text(formatTime(audioVM.player?.duration ?? 0))
-                                .foregroundColor(.gray)
-                                .font(.caption)
-                        }
-                        .padding(.horizontal, 4)
-                    }
-                    .padding(.horizontal)
-                    .padding(.top, -15)
-                    
-                    
-                    // Playback control buttons: Previous, Play/Pause, Next
-                    HStack(spacing: 60) {
-                        Button(action: {
-                            audioVM.stop()
-                            isPlaying = false
-                            playbackProgress = 0
-                            onPrevious?()
-                        }) {
-                            Image(systemName: "backward.end.fill")
-                                .resizable()
-                                .frame(width: 40, height: 40)
-                                .foregroundColor(.white.opacity(0.7))
-                        }
-                        
-                        Button(action: {
-                            if isPlaying {
-                                audioVM.stop()
-                                stopTimer()
-                            } else {
-                                audioVM.playSong(song)
-                                startTimer()
+                                Image("share")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 30, height: 30)
+                                    .foregroundColor(.green)
                             }
-                            isPlaying.toggle()
-                        }) {
-                            Image(systemName: isPlaying ? "pause.circle.fill" : "play.circle.fill")
-                                .resizable()
-                                .frame(width: 80, height: 80)
-                                .foregroundColor(.white.opacity(0.7))
+                            .padding(.top, -10)
                         }
+                        .padding()
+                        .padding(.top, -40)
                         
-                        Button(action: {
-                            audioVM.stop()
-                            isPlaying = false
-                            playbackProgress = 0
-                            onNext?()
-                        }) {
-                            Image(systemName: "forward.end.fill")
-                                .resizable()
-                                .frame(width: 40, height: 40)
-                                .foregroundColor(.white.opacity(0.7))
+                        // Playback slider
+                        VStack {
+                            Slider(value: $playbackProgress, in: 0...(audioVM.player?.duration ?? 1), onEditingChanged: sliderEditingChanged)
+                                .accentColor(.green)
+                            
+                            HStack {
+                                Text(formatTime(playbackProgress))
+                                    .foregroundColor(.secondary)
+                                    .font(.caption)
+                                Spacer()
+                                Text(formatTime(audioVM.player?.duration ?? 0))
+                                    .foregroundColor(.secondary)
+                                    .font(.caption)
+                            }
+                            .padding(.horizontal, 4)
+                        }
+                        .padding(.horizontal)
+                        .padding(.top, -15)
+                        
+                        // Playback controls
+                        HStack(spacing: 60) {
+                            Button(action: {
+                                audioVM.stop()
+                                isPlaying = false
+                                playbackProgress = 0
+                                onPrevious?()
+                            }) {
+                                Image(systemName: "backward.end.fill")
+                                    .resizable()
+                                    .frame(width: 40, height: 40)
+                                    .foregroundColor(.primary.opacity(0.7))
+                            }
+                            
+                            Button(action: {
+                                if isPlaying {
+                                    audioVM.stop()
+                                    stopTimer()
+                                } else {
+                                    audioVM.playSong(song)
+                                    startTimer()
+                                }
+                                isPlaying.toggle()
+                            }) {
+                                Image(systemName: isPlaying ? "pause.circle.fill" : "play.circle.fill")
+                                    .resizable()
+                                    .frame(width: 80, height: 80)
+                                    .foregroundColor(.primary.opacity(0.7))
+                            }
+                            
+                            Button(action: {
+                                audioVM.stop()
+                                isPlaying = false
+                                playbackProgress = 0
+                                onNext?()
+                            }) {
+                                Image(systemName: "forward.end.fill")
+                                    .resizable()
+                                    .frame(width: 40, height: 40)
+                                    .foregroundColor(.primary.opacity(0.7))
+                            }
                         }
                     }
-                    }.padding()
+                    .padding()
                     .padding(.top, -20)
                     
-                    // Add to playlist button
+                    // Add to playlist
                     Button(action: {
                         allPlaylists = CoreDataManager.shared.fetchPlaylists()
                         showBottomSheet = true
@@ -173,7 +163,7 @@ struct SongDetailView: View {
                         }
                         .padding()
                         .background(Color.green)
-                        .foregroundColor(.black)
+                        .foregroundColor(.white)
                         .cornerRadius(20)
                     }
                     .sheet(isPresented: $showBottomSheet) {
@@ -181,10 +171,8 @@ struct SongDetailView: View {
                             showBottomSheet = false
                         }
                     }
-
-
-
                     
+                    // Save locally
                     Button(action: {
                         saveSongLocally(song)
                     }) {
@@ -200,21 +188,19 @@ struct SongDetailView: View {
                     }
                     .padding(.top, 10)
                     
+                    // View playlist
                     NavigationLink(destination: UserPlaylistView()) {
                         Text("View My Playlist")
                             .foregroundColor(.green)
                             .padding()
-                            .background(Color.white)
+                            .background(Color.primary.opacity(0.1))
                             .cornerRadius(12)
                     }
-
-
                     
                     Spacer()
                 }
                 .padding()
                 .onAppear {
-                    // Sync isPlaying with audioVM player state
                     isPlaying = audioVM.currentlyPlaying?.id == song.id && audioVM.player?.isPlaying == true
                     playbackProgress = audioVM.player?.currentTime ?? 0
                     if isPlaying {
@@ -228,51 +214,40 @@ struct SongDetailView: View {
                 }
             }
         }
-        
-        
     }
+
+    // MARK: - Helpers
     
     func shareSong(_ song: Song) {
         var items: [Any] = []
-
-        // Share title and artist text
         let text = "Check out this song: \(song.title) by \(song.artist)"
         items.append(text)
-
-        // Also share the mp3 file if it's saved locally
+        
         let fileManager = FileManager.default
         let docsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
         let songURL = docsURL.appendingPathComponent("\(song.fileName).mp3")
-
+        
         if fileManager.fileExists(atPath: songURL.path) {
             items.append(songURL)
         }
-
-        // Present share sheet
+        
         let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
-
-        // Get current window/root VC
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let rootVC = windowScene.windows.first?.rootViewController {
             rootVC.present(activityVC, animated: true, completion: nil)
         }
     }
 
-    
     func saveSongLocally(_ song: Song) {
         let fileManager = FileManager.default
-
-        // 1. Find source file (in bundle)
         guard let sourceURL = Bundle.main.url(forResource: song.fileName, withExtension: "mp3") else {
             print("❌ File not found in bundle: \(song.fileName).mp3")
             return
         }
 
-        // 2. Destination: Documents folder
         let docsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
         let destinationURL = docsURL.appendingPathComponent("\(song.fileName).mp3")
 
-        // 3. Copy file if not exists
         if fileManager.fileExists(atPath: destinationURL.path) {
             print("ℹ️ Already saved: \(destinationURL.lastPathComponent)")
         } else {
@@ -285,8 +260,6 @@ struct SongDetailView: View {
         }
     }
 
-    // MARK: - Helpers
-    
     func sliderEditingChanged(editingStarted: Bool) {
         if editingStarted {
             stopTimer()
@@ -298,7 +271,7 @@ struct SongDetailView: View {
             }
         }
     }
-    
+
     func startTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
             if let player = audioVM.player {
@@ -310,12 +283,12 @@ struct SongDetailView: View {
             }
         }
     }
-    
+
     func stopTimer() {
         timer?.invalidate()
         timer = nil
     }
-    
+
     func formatTime(_ time: Double) -> String {
         let totalSeconds = Int(time)
         let minutes = totalSeconds / 60

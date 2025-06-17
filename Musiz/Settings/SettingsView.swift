@@ -16,7 +16,7 @@ struct SettingsView: View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
-
+                    
                     // MARK: - Account Section
                     SettingsSection(title: "Account") {
                         Group {
@@ -51,7 +51,7 @@ struct SettingsView: View {
                         }
                     }
 
-                    // MARK: - Logout
+                    // MARK: - Logout Button
                     Button(action: {
                         print("🔒 User logged out")
                     }) {
@@ -60,27 +60,21 @@ struct SettingsView: View {
                             .fontWeight(.semibold)
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background(Color(.systemGray6))
+                            // Background adapts for light/dark mode using systemGray5
+                            .background(Color(UIColor.systemGray5))
                             .cornerRadius(12)
                             .padding(.horizontal)
                     }
                 }
                 .padding()
             }
-            .background(Color.black.edgesIgnoringSafeArea(.all))
+            // Background color adapts dynamically for light/dark mode
+            .background(Color(UIColor.systemBackground).edgesIgnoringSafeArea(.all))
+            // Navigation title color also adapts automatically
             .navigationTitle("Settings")
-            .foregroundColor(.white)
+            // Foreground color automatically uses label color for readability
+            .foregroundColor(Color(UIColor.label))
         }
-        .preferredColorScheme(.dark)
     }
 }
 
-#Preview {
-    SettingsView()
-}
-
-
-
-#Preview {
-    SettingsView()
-}

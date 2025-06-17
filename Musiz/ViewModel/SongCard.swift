@@ -7,12 +7,11 @@
 
 import SwiftUI
 
-// MARK: - Song Card View
-
 struct SongCard: View {
     let song: Song
     @ObservedObject var audioVM: AudioPlayerViewModel
-    
+    @Environment(\.colorScheme) var colorScheme
+
     var body: some View {
         NavigationLink(destination: SongDetailView(song: song, audioVM: audioVM)) {
             VStack(alignment: .leading, spacing: 6) {
@@ -22,20 +21,18 @@ struct SongCard: View {
                     .frame(width: 140, height: 140)
                     .cornerRadius(8)
                     .shadow(radius: 2)
-                
+
                 Text(song.title)
                     .font(.headline)
-                    .foregroundColor(.white)
+                    .foregroundColor(.primary) // Auto-adapts to dark/light mode
                     .lineLimit(1)
-                
+
                 Text(song.artist)
                     .font(.subheadline)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.secondary) // Slightly dimmer text, adaptive
                     .lineLimit(1)
             }
             .frame(width: 140)
         }
     }
 }
-
-

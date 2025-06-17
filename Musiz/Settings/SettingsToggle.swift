@@ -16,12 +16,20 @@ struct SettingsToggle: View {
         Toggle(isOn: $isOn) {
             HStack {
                 Image(systemName: icon)
-                    .foregroundColor(.green)
+                    // Use systemGreen to auto-adapt in light/dark mode
+                    .foregroundColor(Color(.systemGreen))
                     .frame(width: 24)
                 Text(label)
+                    // Use primary color for text to automatically adapt to mode
+                    .foregroundColor(Color.primary)
             }
         }
         .padding(.vertical, 10)
         .padding(.horizontal)
+        // Background color that adapts based on system appearance:
+        // Light mode: light gray background
+        // Dark mode: dark gray background
+        .background(Color(UIColor.secondarySystemBackground))
+        .cornerRadius(12) // Rounded corners for neat UI
     }
 }

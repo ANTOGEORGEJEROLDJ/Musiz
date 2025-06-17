@@ -11,8 +11,10 @@ struct CustomTextField: View {
     var placeholder: String
     @Binding var text: String
 
+    // Use dynamic colors that automatically adapt to light/dark mode
     var body: some View {
         HStack {
+            // Icon (green in both modes)
             Image(systemName: icon)
                 .foregroundColor(.green)
                 .frame(width: 30)
@@ -20,27 +22,29 @@ struct CustomTextField: View {
             if placeholder.lowercased().contains("password") {
                 ZStack(alignment: .leading) {
                     if text.isEmpty {
+                        // Placeholder color adapts to light/dark mode
                         Text(placeholder)
-                            .foregroundColor(.white.opacity(0.5))
+                            .foregroundColor(Color.primary.opacity(0.5))
                     }
                     SecureField("", text: $text)
-                        .foregroundColor(.white)
+                        .foregroundColor(Color.primary) // adapts based on mode
                 }
             } else {
                 ZStack(alignment: .leading) {
                     if text.isEmpty {
                         Text(placeholder)
-                            .foregroundColor(.white.opacity(0.5))
+                            .foregroundColor(Color.primary.opacity(0.5))
                     }
                     TextField("", text: $text)
-                        .foregroundColor(.white)
+                        .foregroundColor(Color.primary)
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
                 }
             }
         }
         .padding()
-        .background(Color.white.opacity(0.05))
+        // Background adapts to system theme using systemBackground
+        .background(Color(.systemBackground).opacity(0.05))
         .cornerRadius(12)
         .overlay(
             RoundedRectangle(cornerRadius: 12)

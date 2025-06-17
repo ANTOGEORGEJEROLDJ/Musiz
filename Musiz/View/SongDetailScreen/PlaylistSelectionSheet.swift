@@ -5,31 +5,41 @@
 //  Created by Paranjothi iOS MacBook Pro on 17/06/25.
 //
 
-// PlaylistSelectionSheet.swift
+
 import SwiftUI
 
 struct PlaylistSelectionSheet: View {
     var playlists: [UserPlaylist]
     var songToAdd: Song
-
     var onDismiss: () -> Void
 
     var body: some View {
         NavigationView {
-            List(playlists, id: \.self) { playlist in
-                Button(action: {
-                    CoreDataManager.shared.addSong(songToAdd, to: playlist)
-                    onDismiss()
-                }) {
-                    HStack {
-                        Text(playlist.name ?? "Unnamed")
-                        Spacer()
-                        Image(systemName: "plus.circle.fill")
-                            .foregroundColor(.green)
+            List {
+                if playlists.isEmpty {
+                    Text("No playlists found.")
+                        .foregroundColor(.secondary)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding()
+                } else {
+                    ForEach(playlists, id: \.self) { playlist in
+                        Button(action: {
+                            CoreDataManager.shared.addSong(songToAdd, to: playlist)
+                            onDismiss()
+                        }) {
+                            HStack {
+                                Text(playlist.name ?? "Unnamed Playlist")
+                                    .foregroundColor(.primary)
+                                Spacer()
+                                Image(systemName: "plus.circle.fill")
+                                    .foregroundColor(.green)
+                            }
+                            .padding(.vertical, 8)
+                        }
                     }
-                    .padding(.vertical, 8)
                 }
             }
+            .listStyle(InsetGroupedListStyle())
             .navigationTitle("Select Playlist")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -39,5 +49,6 @@ struct PlaylistSelectionSheet: View {
                 }
             }
         }
+        .preferredColorScheme(nil) // Follows system Light/Dark Mode
     }
 }

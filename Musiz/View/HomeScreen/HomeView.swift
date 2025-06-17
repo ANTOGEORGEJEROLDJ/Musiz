@@ -8,21 +8,21 @@
 import SwiftUI
 import AVFoundation
 
-
 struct HomeView: View {
     @StateObject private var audioVM = AudioPlayerViewModel()
     @State private var profileImage: UIImage?
     @State private var user: User?
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     
-                    HStack{
+                    HStack {
                         Text("Good Afternoon")
                             .font(.largeTitle.bold())
-                            .foregroundColor(.white)
+                            .foregroundColor(.primary)
                             .padding(.horizontal)
                             .padding(.top, 16)
                         
@@ -45,10 +45,7 @@ struct HomeView: View {
                                     .padding(.top, 16)
                                     .padding(.leading, 20)
                             }
-                            
                         }
-                        
-                        
                     }
                     
                     SectionView(title: "Recommended", songs: recommendedSongs, audioVM: audioVM)
@@ -58,7 +55,10 @@ struct HomeView: View {
                     Spacer(minLength: 30)
                 }
             }
-            .background(Color.black.edgesIgnoringSafeArea(.all))
+            .background(
+                (colorScheme == .dark ? Color.black : Color.white)
+                    .edgesIgnoringSafeArea(.all)
+            )
             .navigationBarHidden(true)
             .onAppear {
                 user = CoreDataManager.shared.fetchLatestUser()
@@ -69,6 +69,3 @@ struct HomeView: View {
         }
     }
 }
-
-
-

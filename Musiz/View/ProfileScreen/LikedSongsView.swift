@@ -17,24 +17,30 @@ struct LikedSongsView: View {
                     HStack {
                         Image(song.imageName)
                             .resizable()
+                            .scaledToFill()
                             .frame(width: 60, height: 60)
                             .cornerRadius(8)
+                            .clipped() // Ensure image fits in frame
                         
-                        VStack(alignment: .leading) {
-                            Text(song.title).foregroundColor(.white).bold()
-                            Text(song.artist).foregroundColor(.gray)
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(song.title)
+                                .foregroundColor(.primary)
+                                .bold()
+                            Text(song.artist)
+                                .foregroundColor(.secondary)
+                                .font(.subheadline)
                         }
                         Spacer()
                     }
                     .padding()
-                    .background(Color(.darkGray))
+                    .background(Color(UIColor.secondarySystemBackground))
                     .cornerRadius(10)
                 }
             }
             .padding()
         }
         .navigationTitle("Liked Songs")
-        .background(Color.black.ignoresSafeArea())
+        .background(Color(UIColor.systemBackground).ignoresSafeArea())
         .onAppear {
             likedSongs = CoreDataManager.shared.fetchLikedSongs()
         }

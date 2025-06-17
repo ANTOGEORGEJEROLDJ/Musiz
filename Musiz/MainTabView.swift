@@ -11,8 +11,8 @@ import SwiftUI
 let demoPlaylist = Playlist(
     
     title: "Top Hits 2025",
-    description: "All your favorite tracks here", // ✅ Added
-    owner: "Spotify",                            // ✅ Added
+    description: "All your favorite tracks here",
+    owner: "Spotify",
     imageName: "1",
     songs: [
         Song(title: "Happy Now", artist: "Zedd", imageName: "2", fileName: "happy_now", genre: "Chill"),
@@ -38,9 +38,25 @@ struct MainTabView: View {
     @StateObject private var audioVM = AudioPlayerViewModel()
 
     init() {
-        UITabBar.appearance().backgroundColor = UIColor.black
-        UITabBar.appearance().barTintColor = .black
-        UITabBar.appearance().unselectedItemTintColor = UIColor.gray
+        // Customize UITabBar appearance globally
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        // Background color adapts automatically:
+        // - Black in dark mode
+        // - White in light mode
+        appearance.backgroundColor = UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ? .black : .white
+        }
+        // Set the appearance for standard and scrollEdgeAppearance
+        UITabBar.appearance().standardAppearance = appearance
+        UITabBar.appearance().scrollEdgeAppearance = appearance
+        
+        // Unselected icons color adapt to mode for visibility:
+        // - Light gray in dark mode
+        // - Dark gray in light mode
+        UITabBar.appearance().unselectedItemTintColor = UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ? .lightGray : .darkGray
+        }
     }
 
     var body: some View {
@@ -73,9 +89,13 @@ struct MainTabView: View {
                 }
                 .tag(3)
         }
-        .accentColor(.green) // Tab icon highlight
-        .background(Color.black.ignoresSafeArea())
+        // Accent color applies to selected tab icon and text
+        // Green color works well in both modes
+        .accentColor(.green)
+        // Background color of the whole TabView:
+        // Black in dark mode, white in light mode automatically
+        .background(Color("BackgroundColor").ignoresSafeArea())
+        // Hides navigation back button if inside NavigationView
         .navigationBarBackButtonHidden(true)
     }
 }
-

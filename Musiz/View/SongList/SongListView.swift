@@ -5,6 +5,13 @@
 //  Created by Paranjothi iOS MacBook Pro on 17/06/25.
 //
 
+//
+//  SongListView.swift
+//  Musiz
+//
+//  Created by Paranjothi iOS MacBook Pro on 17/06/25.
+//
+
 import SwiftUI
 
 struct SongListView: View {
@@ -12,15 +19,19 @@ struct SongListView: View {
     let songs: [Song]
     @ObservedObject var audioVM: AudioPlayerViewModel
 
+    @Environment(\.colorScheme) var colorScheme
+
     var body: some View {
         ZStack {
-            Color.black.ignoresSafeArea() // Full black background
+            // Adaptive background
+            Color(UIColor.systemBackground)
+                .ignoresSafeArea()
 
             VStack(alignment: .leading) {
                 // Custom Header
                 Text(playlistTitle)
                     .font(.largeTitle.bold())
-                    .foregroundColor(.green)
+                    .foregroundColor(.accentColor)
                     .padding([.top, .horizontal])
 
                 // List of Songs
@@ -37,11 +48,11 @@ struct SongListView: View {
                                 VStack(alignment: .leading, spacing: 4) {
                                     Text(song.title)
                                         .font(.headline)
-                                        .foregroundColor(.white)
+                                        .foregroundColor(.primary)
 
                                     Text(song.artist)
                                         .font(.subheadline)
-                                        .foregroundColor(.gray)
+                                        .foregroundColor(.secondary)
                                 }
 
                                 Spacer()
@@ -52,16 +63,20 @@ struct SongListView: View {
                             }
                             .padding(.vertical, 8)
                         }
-                        .listRowBackground(Color.black)
-                        .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
                     }
                 }
                 .listStyle(PlainListStyle())
-                .onAppear {
-                    UITableView.appearance().backgroundColor = .black
-                    UITableViewCell.appearance().backgroundColor = .black
-                }
             }
+        }
+        // Set appearance for UIKit elements on appear
+        .onAppear {
+            let bgColor = UIColor.systemBackground
+            UITableView.appearance().backgroundColor = bgColor
+            UITableViewCell.appearance().backgroundColor = bgColor
+        }
+        .onDisappear {
+            UITableView.appearance().backgroundColor = nil
+            UITableViewCell.appearance().backgroundColor = nil
         }
     }
 }
