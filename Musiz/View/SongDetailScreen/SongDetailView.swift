@@ -16,6 +16,9 @@ struct SongDetailView: View {
     @State private var playbackProgress: Double = 0
     @State private var isPlaying: Bool = false
     @State private var showPlaylist = false
+    @State private var showBottomSheet = false
+    @State private var allPlaylists: [UserPlaylist] = []
+
     
     // Callbacks for next/previous song control
     var onNext: (() -> Void)?
@@ -46,19 +49,40 @@ struct SongDetailView: View {
                         .padding(.top, -60)
                     
                     VStack{
-                    
-                    VStack() {
-                        Text(song.title)
-                            .font(.largeTitle.bold())
-                            .foregroundColor(.white)
-                            .multilineTextAlignment(.center)
                         
-                        Text(song.artist)
-                            .font(.title3)
-                            .foregroundColor(.gray)
-                    }
-                    .padding(.top, -50)
-                    
+                        HStack{
+                            
+                            VStack() {
+                                Text(song.title)
+                                    .font(.largeTitle.bold())
+                                    .foregroundColor(.white)
+                                    .multilineTextAlignment(.center)
+                                
+                                Text(song.artist)
+                                    .font(.title3)
+                                    .foregroundColor(.gray)
+                            }
+                            .padding(.top, -25)
+                            
+                            Spacer()
+                            
+                            Button(action: {
+                                shareSong(song)
+                            }) {
+                                HStack {
+                                    Image("share")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 30, height: 30)
+                                        .tint(.green)
+                                }
+                                .padding()
+                                .foregroundColor(.green)
+                            }
+                            .padding(.top, -25)
+
+                        }.padding()
+                            .padding(.top, -40)
                     // Playback slider + time labels
                     VStack {
                         Slider(value: $playbackProgress, in: 0...(audioVM.player?.duration ?? 1), onEditingChanged: sliderEditingChanged)
@@ -126,7 +150,6 @@ struct SongDetailView: View {
                     
                     // Add to playlist button
                     Button(action: {
-                        CoreDataManager.shared.saveSong(title: song.title, artist: song.artist, imageName: song.imageName)
                         showPlaylist = true
                     }) {
                         HStack {
@@ -139,9 +162,8 @@ struct SongDetailView: View {
                         .foregroundColor(.black)
                         .cornerRadius(20)
                     }
-                    .padding(.top, 20)
                     .navigationDestination(isPresented: $showPlaylist) {
-                        UserPlaylistView()
+                        UserPlaylistView(songToAdd: song)
                     }
 
                     
@@ -191,6 +213,33 @@ struct SongDetailView: View {
         
         
     }
+    
+    func shareSong(_ song: Song) {
+        var items: [Any] = []
+
+        // Share title and artist text
+        let text = "Check out this song: \(song.title) by \(song.artist)"
+        items.append(text)
+
+        // Also share the mp3 file if it's saved locally
+        let fileManager = FileManager.default
+        let docsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let songURL = docsURL.appendingPathComponent("\(song.fileName).mp3")
+
+        if fileManager.fileExists(atPath: songURL.path) {
+            items.append(songURL)
+        }
+
+        // Present share sheet
+        let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
+
+        // Get current window/root VC
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let rootVC = windowScene.windows.first?.rootViewController {
+            rootVC.present(activityVC, animated: true, completion: nil)
+        }
+    }
+
     
     func saveSongLocally(_ song: Song) {
         let fileManager = FileManager.default

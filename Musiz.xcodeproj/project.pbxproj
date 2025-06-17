@@ -18,7 +18,6 @@
 		4E1E01DF2E0135E40078E722 /* SongListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E01DE2E0135E40078E722 /* SongListView.swift */; };
 		4E1E01E12E0135FA0078E722 /* SongDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E01E02E0135FA0078E722 /* SongDetailView.swift */; };
 		4E1E01E32E0136220078E722 /* SearchCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E01E22E0136220078E722 /* SearchCategory.swift */; };
-		4E1E01E52E0136430078E722 /* PlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E01E42E0136430078E722 /* PlaylistView.swift */; };
 		4E1E01E72E0136590078E722 /* PlayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E01E62E0136590078E722 /* PlayList.swift */; };
 		4E1E01E92E0136730078E722 /* SamplePlayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E01E82E0136730078E722 /* SamplePlayList.swift */; };
 		4E1E01EB2E0136920078E722 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E01EA2E0136920078E722 /* ProfileView.swift */; };
@@ -27,6 +26,9 @@
 		4E1E02062E013DEF0078E722 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E02042E013DEF0078E722 /* Model.xcdatamodeld */; };
 		4E1E02082E013E2A0078E722 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E02072E013E2A0078E722 /* CoreDataManager.swift */; };
 		4E1E020A2E013E6D0078E722 /* UserPlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E02092E013E6D0078E722 /* UserPlaylistView.swift */; };
+		4E1E020C2E01455B0078E722 /* AddPlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E020B2E01455B0078E722 /* AddPlaylistView.swift */; };
+		4E1E02172E0149480078E722 /* PlaylistDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E02162E0149470078E722 /* PlaylistDetailView.swift */; };
+		4E1E02192E0153010078E722 /* PlaylistSelectionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E02182E0153010078E722 /* PlaylistSelectionSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +63,6 @@
 		4E1E01DE2E0135E40078E722 /* SongListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListView.swift; sourceTree = "<group>"; };
 		4E1E01E02E0135FA0078E722 /* SongDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailView.swift; sourceTree = "<group>"; };
 		4E1E01E22E0136220078E722 /* SearchCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategory.swift; sourceTree = "<group>"; };
-		4E1E01E42E0136430078E722 /* PlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistView.swift; sourceTree = "<group>"; };
 		4E1E01E62E0136590078E722 /* PlayList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayList.swift; sourceTree = "<group>"; };
 		4E1E01E82E0136730078E722 /* SamplePlayList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamplePlayList.swift; sourceTree = "<group>"; };
 		4E1E01EA2E0136920078E722 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -70,6 +71,9 @@
 		4E1E02052E013DEF0078E722 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		4E1E02072E013E2A0078E722 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		4E1E02092E013E6D0078E722 /* UserPlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPlaylistView.swift; sourceTree = "<group>"; };
+		4E1E020B2E01455B0078E722 /* AddPlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlaylistView.swift; sourceTree = "<group>"; };
+		4E1E02162E0149470078E722 /* PlaylistDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDetailView.swift; sourceTree = "<group>"; };
+		4E1E02182E0153010078E722 /* PlaylistSelectionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistSelectionSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -158,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				4E1E01E02E0135FA0078E722 /* SongDetailView.swift */,
+				4E1E02182E0153010078E722 /* PlaylistSelectionSheet.swift */,
 			);
 			path = SongDetailScreen;
 			sourceTree = "<group>";
@@ -181,8 +186,9 @@
 		4E1E01CF2E0131F80078E722 /* PlayListScreen */ = {
 			isa = PBXGroup;
 			children = (
-				4E1E01E42E0136430078E722 /* PlaylistView.swift */,
 				4E1E02092E013E6D0078E722 /* UserPlaylistView.swift */,
+				4E1E020B2E01455B0078E722 /* AddPlaylistView.swift */,
+				4E1E02162E0149470078E722 /* PlaylistDetailView.swift */,
 			);
 			path = PlayListScreen;
 			sourceTree = "<group>";
@@ -384,11 +390,11 @@
 				4E1E01DB2E0135A90078E722 /* SongCard.swift in Sources */,
 				4E1E01D72E01332B0078E722 /* AudioPlayerViewModel.swift in Sources */,
 				4E1E02062E013DEF0078E722 /* Model.xcdatamodeld in Sources */,
+				4E1E02172E0149480078E722 /* PlaylistDetailView.swift in Sources */,
 				4E1E01D92E0135920078E722 /* SongModel.swift in Sources */,
 				4E1E01E72E0136590078E722 /* PlayList.swift in Sources */,
 				4E1E01E32E0136220078E722 /* SearchCategory.swift in Sources */,
 				4E1E01DF2E0135E40078E722 /* SongListView.swift in Sources */,
-				4E1E01E52E0136430078E722 /* PlaylistView.swift in Sources */,
 				4E1E01E12E0135FA0078E722 /* SongDetailView.swift in Sources */,
 				4E1E01DD2E0135C10078E722 /* SectionView.swift in Sources */,
 				4E1E01D32E0132EC0078E722 /* HomeView.swift in Sources */,
@@ -396,7 +402,9 @@
 				4E1E01E92E0136730078E722 /* SamplePlayList.swift in Sources */,
 				4E1E01EB2E0136920078E722 /* ProfileView.swift in Sources */,
 				4E1E02082E013E2A0078E722 /* CoreDataManager.swift in Sources */,
+				4E1E02192E0153010078E722 /* PlaylistSelectionSheet.swift in Sources */,
 				4E1E01C92E0131AE0078E722 /* MusizApp.swift in Sources */,
+				4E1E020C2E01455B0078E722 /* AddPlaylistView.swift in Sources */,
 				4E1E020A2E013E6D0078E722 /* UserPlaylistView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
