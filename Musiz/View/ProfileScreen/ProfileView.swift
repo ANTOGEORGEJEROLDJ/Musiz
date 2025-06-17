@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @State private var user: User?
+    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -17,8 +19,8 @@ struct ProfileView: View {
                         .frame(width: 100, height: 100)
                         .clipShape(Circle()).overlay(Circle().stroke(Color.green, lineWidth: 2))
 
-                    Text("Anto").font(.title2).bold().foregroundColor(.white)
-                    Text("Anto@gmail.com").foregroundColor(.gray)
+                    Text(user?.username ?? "No Name").font(.title2).bold().foregroundColor(.white)
+                    Text(user?.email ?? "No Email").foregroundColor(.gray)
 
                     HStack(spacing: 40) {
                         VStack {
@@ -32,27 +34,42 @@ struct ProfileView: View {
                     }
 
                     VStack(spacing: 16) {
-                        ProfileRow(title: "Your Playlists", icon: "music.note.list")
-                        ProfileRow(title: "Liked Songs", icon: "heart.fill")
-                        ProfileRow(title: "Settings", icon: "gearshape.fill")
+                        NavigationLink(destination: UserPlaylistView()) {
+                            ProfileRow(title: "Your Playlists", icon: "music.note.list")
+                        }
+                        // ✅ NavigationLink only here
+                        NavigationLink(destination: LikedSongsView()) {
+                            ProfileRow(title: "Liked Songs", icon: "heart.fill")
+                        }
+
+                        NavigationLink(destination: SettingsView()) {
+                            ProfileRow(title: "Settings", icon: "gearshape.fill")
+                        }
+                        
                         ProfileRow(title: "Log Out", icon: "arrow.backward.circle.fill")
                     }
                 }
                 .padding()
+                .onAppear {
+                    user = CoreDataManager.shared.fetchLatestUser()
+                }
             }
             .background(Color.black.edgesIgnoringSafeArea(.all))
             .navigationBarHidden(true)
         }
     }
 }
-
 struct ProfileRow: View {
     let title: String, icon: String, color: Color = .white
-
+    
     var body: some View {
         HStack {
-            Image(systemName: icon).foregroundColor(color).frame(width: 32)
-            Text(title).foregroundColor(color).font(.headline)
+            Image(systemName: icon)
+                .foregroundColor(.green)
+                .frame(width: 32)
+            Text(title)
+                .foregroundColor(color)
+                .font(.headline)
             Spacer()
             Image(systemName: "chevron.right").foregroundColor(.gray)
         }

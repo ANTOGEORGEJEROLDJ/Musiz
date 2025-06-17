@@ -126,4 +126,70 @@ class CoreDataManager {
             }
         }
     }
+    
+    func saveLikedSong(_ song: Song) {
+        let context = container.viewContext
+        let likedSong = LikedSong(context: context)
+        likedSong.id = song.id.uuidString
+        likedSong.title = song.title
+        likedSong.artist = song.artist
+        likedSong.imageName = song.imageName
+        likedSong.fileName = song.fileName
+        likedSong.genre = song.genre
+
+        do {
+            try context.save()
+            print("✅ Liked song saved: \(song.title)")
+        } catch {
+            print("❌ Failed to save liked song: \(error.localizedDescription)")
+        }
+    }
+    
+    // MARK: - User Login Save and Fetch
+
+        func saveUser(username: String, email: String, password: String) {
+            let user = User(context: context)
+            user.username = username
+            user.email = email
+            user.password = password
+
+            saveContext()
+            print("✅ User saved: \(username)")
+        }
+
+        func fetchLatestUser() -> User? {
+            let request: NSFetchRequest<User> = User.fetchRequest()
+            request.sortDescriptors = [NSSortDescriptor(keyPath: \User.username, ascending: true)]
+            request.fetchLimit = 1
+
+            do {
+                return try context.fetch(request).last
+            } catch {
+                print("❌ Failed to fetch user: \(error.localizedDescription)")
+                return nil
+            }
+        }
+    
+    func fetchLikedSongs() -> [Song] {
+        let context = container.viewContext
+        let request = NSFetchRequest<LikedSong>(entityName: "LikedSong")
+
+        do {
+            let results = try context.fetch(request)
+            return results.map {
+                Song(
+                     title: $0.title ?? "",
+                     artist: $0.artist ?? "",
+                     imageName: $0.imageName ?? "defaultImage",
+                     fileName: $0.fileName ?? "", genre: $0.genre ?? "")
+            }
+        } catch {
+            print("Failed to fetch liked songs: \(error)")
+            return []
+        }
+    }
+
+    
+
+
 }

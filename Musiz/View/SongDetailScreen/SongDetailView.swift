@@ -54,35 +54,48 @@ struct SongDetailView: View {
                             
                             VStack() {
                                 Text(song.title)
-                                    .font(.largeTitle.bold())
+                                    .font(.title2.bold())
                                     .foregroundColor(.white)
                                     .multilineTextAlignment(.center)
                                 
                                 Text(song.artist)
-                                    .font(.title3)
+                                    .font(.headline)
                                     .foregroundColor(.gray)
                             }
-                            .padding(.top, -25)
+                            .padding(.top, -10)
                             
                             Spacer()
+                            
+                            
+                            
+                            Button(action: {
+                                CoreDataManager.shared.saveLikedSong(song)
+                            }) {
+                                Image(systemName: "heart.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 30, height: 30)
+                                    .foregroundColor(.green)
+                            }
+                            .padding(.top, -10)
+                            
                             
                             Button(action: {
                                 shareSong(song)
                             }) {
-                                HStack {
                                     Image("share")
                                         .resizable()
                                         .scaledToFit()
                                         .frame(width: 30, height: 30)
                                         .tint(.green)
-                                }
-                                .padding()
-                                .foregroundColor(.green)
-                            }
-                            .padding(.top, -25)
+                                        .foregroundColor(.green)
+                            }.padding(.top, -10)
+
 
                         }.padding()
                             .padding(.top, -40)
+                        
+                        
                     // Playback slider + time labels
                     VStack {
                         Slider(value: $playbackProgress, in: 0...(audioVM.player?.duration ?? 1), onEditingChanged: sliderEditingChanged)

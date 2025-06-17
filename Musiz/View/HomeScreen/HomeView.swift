@@ -16,11 +16,25 @@ struct HomeView: View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
-                    Text("Good Afternoon")
-                        .font(.largeTitle.bold())
-                        .foregroundColor(.white)
-                        .padding(.horizontal)
-                        .padding(.top, 16)
+                    
+                    HStack{
+                        Text("Good Afternoon")
+                            .font(.largeTitle.bold())
+                            .foregroundColor(.white)
+                            .padding(.horizontal)
+                            .padding(.top, 16)
+                        
+                        NavigationLink(destination: ProfileView()) {
+                            Image(systemName: "person.crop.circle")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 40, height: 40)
+                                .foregroundColor(.green)
+                                .padding(.top, 5)
+                                .padding(.trailing)
+                        }
+
+                    }
                     
                     SectionView(title: "Recommended", songs: recommendedSongs, audioVM: audioVM)
                     SectionView(title: "Your Top Mixes", songs: topMixes, audioVM: audioVM)

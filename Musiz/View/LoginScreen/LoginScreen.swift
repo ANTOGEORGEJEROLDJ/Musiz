@@ -52,6 +52,7 @@ struct LoginScreen: View {
 
                         // Login Button
                         Button(action: {
+                            CoreDataManager.shared.saveUser(username: userName, email: email, password: password)
                             navigateToHome = true
                         }) {
                             Text("Login")
@@ -117,30 +118,15 @@ struct LoginScreen: View {
                     }
                     .padding()
                 }
+            }.navigationDestination(isPresented: $navigateToHome) {
+                MainTabView()
             }
+
         }
     }
 }
 
-//// MARK: - SocialLoginButton
-//
-//struct SocialLoginButton: View {
-//    var image: String
-//    var bgColor: Color
-//
-//    var body: some View {
-//        Button(action: {}) {
-//            Image(image)
-//                .resizable()
-//                .scaledToFit()
-//                .frame(width: 24, height: 24)
-//        }
-//        .frame(width: 60, height: 60)
-//        .background(bgColor)
-//        .cornerRadius(15)
-//        .shadow(color: .white, radius: 6, x: 0, y: 4)
-//    }
-//}
+
 
 #Preview {
     LoginScreen()

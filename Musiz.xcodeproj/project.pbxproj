@@ -20,7 +20,6 @@
 		4E1E01E32E0136220078E722 /* SearchCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E01E22E0136220078E722 /* SearchCategory.swift */; };
 		4E1E01E72E0136590078E722 /* PlayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E01E62E0136590078E722 /* PlayList.swift */; };
 		4E1E01E92E0136730078E722 /* SamplePlayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E01E82E0136730078E722 /* SamplePlayList.swift */; };
-		4E1E01EB2E0136920078E722 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E01EA2E0136920078E722 /* ProfileView.swift */; };
 		4E1E01F32E0137530078E722 /* Peaches.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E1E01F22E0137530078E722 /* Peaches.mp3 */; };
 		4E1E01F52E01375C0078E722 /* Perfect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E1E01F42E01375C0078E722 /* Perfect.mp3 */; };
 		4E1E02062E013DEF0078E722 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E02042E013DEF0078E722 /* Model.xcdatamodeld */; };
@@ -31,6 +30,12 @@
 		4E1E02192E0153010078E722 /* PlaylistSelectionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E02182E0153010078E722 /* PlaylistSelectionSheet.swift */; };
 		4E1E021B2E0163F00078E722 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E021A2E0163F00078E722 /* LoginScreen.swift */; };
 		4E1E022A2E01646B0078E722 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E02292E01646B0078E722 /* CustomTextField.swift */; };
+		4E1E02402E0189F00078E722 /* LikedSongsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E023C2E0189F00078E722 /* LikedSongsView.swift */; };
+		4E1E02412E0189F00078E722 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E023D2E0189F00078E722 /* ProfileView.swift */; };
+		4E1E02422E0189F00078E722 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E023E2E0189F00078E722 /* SettingsView.swift */; };
+		4E1E02452E018A090078E722 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E02442E018A090078E722 /* SettingsSection.swift */; };
+		4E1E02472E018A1E0078E722 /* SettingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E02462E018A1E0078E722 /* SettingsRow.swift */; };
+		4E1E02492E018A3B0078E722 /* SettingsToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E02482E018A3B0078E722 /* SettingsToggle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,7 +72,6 @@
 		4E1E01E22E0136220078E722 /* SearchCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategory.swift; sourceTree = "<group>"; };
 		4E1E01E62E0136590078E722 /* PlayList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayList.swift; sourceTree = "<group>"; };
 		4E1E01E82E0136730078E722 /* SamplePlayList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamplePlayList.swift; sourceTree = "<group>"; };
-		4E1E01EA2E0136920078E722 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		4E1E01F22E0137530078E722 /* Peaches.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Peaches.mp3; sourceTree = "<group>"; };
 		4E1E01F42E01375C0078E722 /* Perfect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Perfect.mp3; sourceTree = "<group>"; };
 		4E1E02052E013DEF0078E722 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -78,6 +82,12 @@
 		4E1E02182E0153010078E722 /* PlaylistSelectionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistSelectionSheet.swift; sourceTree = "<group>"; };
 		4E1E021A2E0163F00078E722 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		4E1E02292E01646B0078E722 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		4E1E023C2E0189F00078E722 /* LikedSongsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedSongsView.swift; sourceTree = "<group>"; };
+		4E1E023D2E0189F00078E722 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		4E1E023E2E0189F00078E722 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		4E1E02442E018A090078E722 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
+		4E1E02462E018A1E0078E722 /* SettingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRow.swift; sourceTree = "<group>"; };
+		4E1E02482E018A3B0078E722 /* SettingsToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsToggle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -145,6 +155,7 @@
 				4E1E01C52E0131AE0078E722 /* MainTabView.swift */,
 				4E1E01D42E01330F0078E722 /* Model */,
 				4E1E01D12E0132360078E722 /* View */,
+				4E1E02432E0189F30078E722 /* Settings */,
 				4E1E01D52E01331A0078E722 /* ViewModel */,
 				4E1E02022E013DCB0078E722 /* CoreData */,
 				4E1E01C42E0131AE0078E722 /* Assets.xcassets */,
@@ -197,14 +208,6 @@
 			path = PlayListScreen;
 			sourceTree = "<group>";
 		};
-		4E1E01D02E0132080078E722 /* ProfileScreen */ = {
-			isa = PBXGroup;
-			children = (
-				4E1E01EA2E0136920078E722 /* ProfileView.swift */,
-			);
-			path = ProfileScreen;
-			sourceTree = "<group>";
-		};
 		4E1E01D12E0132360078E722 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,7 +217,7 @@
 				4E1E01CD2E0131D80078E722 /* SongList */,
 				4E1E01CE2E0131E60078E722 /* SearchScreen */,
 				4E1E01CF2E0131F80078E722 /* PlayListScreen */,
-				4E1E01D02E0132080078E722 /* ProfileScreen */,
+				4E1E023F2E0189F00078E722 /* ProfileScreen */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -255,6 +258,26 @@
 				4E1E02292E01646B0078E722 /* CustomTextField.swift */,
 			);
 			path = LoginScreen;
+			sourceTree = "<group>";
+		};
+		4E1E023F2E0189F00078E722 /* ProfileScreen */ = {
+			isa = PBXGroup;
+			children = (
+				4E1E023D2E0189F00078E722 /* ProfileView.swift */,
+				4E1E023C2E0189F00078E722 /* LikedSongsView.swift */,
+			);
+			path = ProfileScreen;
+			sourceTree = "<group>";
+		};
+		4E1E02432E0189F30078E722 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4E1E023E2E0189F00078E722 /* SettingsView.swift */,
+				4E1E02442E018A090078E722 /* SettingsSection.swift */,
+				4E1E02462E018A1E0078E722 /* SettingsRow.swift */,
+				4E1E02482E018A3B0078E722 /* SettingsToggle.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -407,16 +430,21 @@
 				4E1E02172E0149480078E722 /* PlaylistDetailView.swift in Sources */,
 				4E1E01D92E0135920078E722 /* SongModel.swift in Sources */,
 				4E1E01E72E0136590078E722 /* PlayList.swift in Sources */,
+				4E1E02452E018A090078E722 /* SettingsSection.swift in Sources */,
 				4E1E01E32E0136220078E722 /* SearchCategory.swift in Sources */,
 				4E1E01DF2E0135E40078E722 /* SongListView.swift in Sources */,
 				4E1E01E12E0135FA0078E722 /* SongDetailView.swift in Sources */,
 				4E1E021B2E0163F00078E722 /* LoginScreen.swift in Sources */,
+				4E1E02402E0189F00078E722 /* LikedSongsView.swift in Sources */,
+				4E1E02472E018A1E0078E722 /* SettingsRow.swift in Sources */,
+				4E1E02412E0189F00078E722 /* ProfileView.swift in Sources */,
+				4E1E02422E0189F00078E722 /* SettingsView.swift in Sources */,
 				4E1E01DD2E0135C10078E722 /* SectionView.swift in Sources */,
 				4E1E01D32E0132EC0078E722 /* HomeView.swift in Sources */,
 				4E1E01C82E0131AE0078E722 /* MainTabView.swift in Sources */,
+				4E1E02492E018A3B0078E722 /* SettingsToggle.swift in Sources */,
 				4E1E01E92E0136730078E722 /* SamplePlayList.swift in Sources */,
 				4E1E022A2E01646B0078E722 /* CustomTextField.swift in Sources */,
-				4E1E01EB2E0136920078E722 /* ProfileView.swift in Sources */,
 				4E1E02082E013E2A0078E722 /* CoreDataManager.swift in Sources */,
 				4E1E02192E0153010078E722 /* PlaylistSelectionSheet.swift in Sources */,
 				4E1E01C92E0131AE0078E722 /* MusizApp.swift in Sources */,
