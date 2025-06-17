@@ -28,8 +28,9 @@ struct LoginScreen: View {
                             Image("LoginImage")
                                 .resizable()
                                 .scaledToFit()
+                                .cornerRadius(20)
                                 .frame(width: 120, height: 120)
-                                .cornerRadius(50)
+                                
 
                             Text("Login to Continue")
                                 .font(.title3.bold())
