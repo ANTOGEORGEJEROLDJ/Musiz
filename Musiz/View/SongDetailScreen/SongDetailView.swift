@@ -41,8 +41,8 @@ struct SongDetailView: View {
                     Image(song.imageName)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 400, height: 400)
-                        .cornerRadius(15)
+                        .cornerRadius(35)
+                        .frame(width: 370, height: 400)
                         .shadow(radius: 10)
                         .padding(.top, -60)
                     
