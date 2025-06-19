@@ -1,0 +1,6 @@
+framework module Pods_MusizTests {
+  umbrella header "Pods-MusizTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

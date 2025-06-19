@@ -1,0 +1,6 @@
+framework module Pods_Musiz {
+  umbrella header "Pods-Musiz-umbrella.h"
+
+  export *
+  module * { export * }
+}
